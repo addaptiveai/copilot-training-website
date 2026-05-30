@@ -1,0 +1,27 @@
+# Addaptive — Microsoft Copilot Training
+
+Addaptive is an Australian AI consultancy specialising in Microsoft Copilot training and adoption programs for mid-to-large organisations.
+
+## What we do
+
+We deliver practical Copilot training built around how teams actually work — not generic product demos. Our programs are tiered by experience level and designed to produce measurable adoption, not just awareness.
+
+Our three core offerings are:
+
+- Copilot Workshop: a half-day or full-day hands-on session covering core M365 Copilot features with live exercises, suited to teams starting out or needing a structured reset.
+- Copilot Capability Program: a structured multi-session program tiered by user experience level (beginner, intermediate, experienced), including workflow integration and a 30-day adoption checkpoint. Suited to organisations rolling out Copilot at scale.
+- Embedded Adoption Support: an ongoing retainer where Addaptive works alongside the client team to embed Copilot into real workflows, track adoption, and solve problems as they emerge.
+
+## Who we work with
+
+We work with Australian organisations typically between 50 and 500 staff who are already on Microsoft 365 and looking to move from Copilot licence ownership to genuine daily adoption. Clients include the Property Council of Australia, Committee for Brisbane, Match & Wood, and a State Government agency with 200+ staff.
+
+## Where we are based
+
+Brisbane, Queensland, Australia. We deliver programs nationally.
+
+## Contact
+
+david@addaptive.com.au
+addaptive.com.au
+copilot-training.com.au
