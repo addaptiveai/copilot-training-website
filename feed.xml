@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft Copilot Training Australia: Insights</title>
+    <link>https://copilot-training.com.au/insights</link>
+    <description>Articles on Microsoft Copilot adoption, training and licensing for Australian organisations, from Addaptive.</description>
+    <language>en-AU</language>
+    <lastBuildDate>Fri, 11 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://copilot-training.com.au/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Why teams stop using Copilot after the licences are bought]]></title>
+      <link>https://copilot-training.com.au/insights/why-teams-stop-using-copilot</link>
+      <guid isPermaLink="true">https://copilot-training.com.au/insights/why-teams-stop-using-copilot</guid>
+      <description><![CDATA[Copilot usage usually flatlines within weeks of a rollout. The cause is rarely resistance. It is that the rollout finished at the licence and never reached the work.]]></description>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <author>david@addaptive.com.au</author>
+    </item>
+    <item>
+      <title><![CDATA[Copilot in Excel, PowerPoint and Outlook: what's actually worth training your team on]]></title>
+      <link>https://copilot-training.com.au/insights/copilot-features-worth-training</link>
+      <guid isPermaLink="true">https://copilot-training.com.au/insights/copilot-features-worth-training</guid>
+      <description><![CDATA[Copilot ships with dozens of features. Most teams use three of them badly instead of ten of them well. Here are the ones that earn the training time.]]></description>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <author>david@addaptive.com.au</author>
+    </item>
+    <item>
+      <title><![CDATA[What Copilot Cowork changes for teams still learning the basics]]></title>
+      <link>https://copilot-training.com.au/insights/what-copilot-cowork-changes</link>
+      <guid isPermaLink="true">https://copilot-training.com.au/insights/what-copilot-cowork-changes</guid>
+      <description><![CDATA[Copilot Cowork became generally available on 16 June 2026. What it does today, what is still limited to a preview, and what it means if your team is mid-rollout.]]></description>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <author>david@addaptive.com.au</author>
+    </item>
+    <item>
+      <title><![CDATA[Copilot paid licence vs free: what you're actually comparing]]></title>
+      <link>https://copilot-training.com.au/insights/copilot-paid-licence-vs-free</link>
+      <guid isPermaLink="true">https://copilot-training.com.au/insights/copilot-paid-licence-vs-free</guid>
+      <description><![CDATA[Three tiers of Copilot, and the confusion between them costs money in both directions. What the free version does, what you already have, and what the paid licence adds.]]></description>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <author>david@addaptive.com.au</author>
+    </item>
+  </channel>
+</rss>
