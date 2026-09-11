@@ -24,6 +24,20 @@ site had the same class of problem and was fixed the other way round in the
 Domains settings, make `copilot-training.com.au` the primary domain serving
 content, and set `www.copilot-training.com.au` to redirect to it (308).
 
+**Search Console confirms the apex is the right choice.** Checked on
+11 September 2026 in the `https://copilot-training.com.au/` property:
+
+- Google-selected canonical: the inspected URL, i.e. the apex. Google has
+  already settled on the apex despite the 307, because the `www` page's
+  canonical tag points there.
+- Referring page: `https://www.copilot-training.com.au/`, so Google reached the
+  apex through the `www` version.
+- Sitemaps: "No referring sitemaps detected", which this release fixes.
+- Last crawl: 11 September 2026, and the page is indexed.
+
+So the fix is not a change of direction, it is making the server agree with the
+canonical Google has already picked.
+
 Everything in this release assumes the apex is canonical. If you would rather
 keep `www`, change `SITE_URL` in `src/site.mjs` and rebuild; canonicals,
 sitemap, feed and JSON-LD all follow from that one constant.
