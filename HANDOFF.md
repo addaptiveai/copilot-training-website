@@ -214,6 +214,7 @@ Two deliberate notes on house style:
 | Accessibility | Alt text, heading order, duplicate ids, label association, fragment targets, all checked on every build |
 | External sources | All 8 cited links resolve directly, no redirects. One Microsoft URL had already moved and was updated |
 | CI workflow | YAML validated, drift guard confirmed to catch uncommitted output |
+| Page weight | Homepage HTML 57.9 KB to 19.9 KB. Shared CSS, JS and logos now cache across all nine pages rather than being re-sent inline per page |
 | Reduced motion | All transforms and transitions disabled under `prefers-reduced-motion` |
 
 **Not done:** a live contact form submission. That sends a real enquiry email to
