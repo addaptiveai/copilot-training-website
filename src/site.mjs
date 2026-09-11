@@ -40,16 +40,19 @@ export const SERVICES = [
   },
 ];
 
+/* `url` should be a page that uniquely identifies the author, which is what
+   Google's Article guidance asks for. Addaptive's about page names David but
+   not Mariah, so hers is deliberately absent rather than pointed at a page
+   that does not identify her. Add it once she appears there. */
 export const AUTHORS = {
   david: {
     name: 'David Benett',
     role: 'Founder, Addaptive',
-    url: ORG_URL,
+    url: `${ORG_URL}/about/`,
   },
   mariah: {
     name: 'Mariah Blacker',
     role: 'Consultant, Addaptive',
-    url: ORG_URL,
   },
 };
 

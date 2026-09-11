@@ -170,6 +170,7 @@ ${ctaBand(
           '@type': 'Person',
           name: author.name,
           jobTitle: author.role,
+          ...(author.url ? { url: author.url } : {}),
           worksFor: { '@id': `${abs('/')}/#organisation` },
         },
         publisher: { '@id': `${abs('/')}/#organisation` },

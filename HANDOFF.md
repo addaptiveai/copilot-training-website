@@ -253,31 +253,74 @@ step is wanted on Vercel, that config needs revisiting.
 
 ## Still to do
 
-1. **Review the preview and merge PR #1.** Everything else is done. The preview
-   is behind Vercel's deployment protection, so open it while signed in to
-   Vercel.
-4. **Move the repo to the Addaptive Enterprises GitHub account**, as David
-   asked. It currently sits under `addaptiveai`. Transfer in the repo's
-   settings; GitHub redirects the old remote automatically, and the Vercel
-   integration needs reconnecting after the move.
-5. **Run Google's Rich Results Test** against the preview URL. The Schema.org
-   Validator has already passed, but Rich Results needs a public URL.
-6. **After production deploy:** submit the sitemap in Search Console and Bing
-   Webmaster Tools, and request indexing for each of the eight new URLs via URL
-   Inspection. The property is already verified via the GA4 tag.
-7. **Register `form_submitted` as a key event in GA4**, matching the other
-   Addaptive sites. The event now fires; marking it as a key event is a change
-   in the GA4 interface.
-8. **Confirm logo permission** for Committee for Brisbane. Property Council and
-   Match & Wood are already named on the live site and their logos are already
-   published on addaptive.com.au. Committee for Brisbane's logo is also already
-   on addaptive.com.au, so this is likely settled, but the brief asked for
-   explicit sign-off and I have not seen it.
-9. **Re-check article 3 close to publish.** The brief asked for this and the
-   article says so on its face. The Frontier detail in particular is the part
-   most likely to move.
+1. **Mark `form_submitted` as a key event in GA4.** This one cannot be done
+   ahead of time. This property's GA4 interface only lets you star an event it
+   has already observed, and there is no "new key event by name" option.
+   `form_start` is already showing under Recent events, so the taxonomy works.
+   Once the first enquiry comes through, go to Admin, Data display, Events,
+   Recent events, and click the star next to `form_submitted`. GA4 can take up
+   to 24 hours to list a newly seen event.
 
----
+2. **Move the repo to the Addaptive Enterprises GitHub account.** It still sits
+   under `addaptiveai`. Transfer in the repo settings; GitHub redirects the old
+   remote automatically, but the Vercel integration needs reconnecting
+   afterwards, so do it at a quiet moment rather than before a release.
+
+3. **Submit the sitemap to Bing Webmaster Tools.** Google is done. Bing was not
+   reachable in this session.
+
+4. **Enable 2FA on the GitHub account.** GitHub gave a 4 day deadline on
+   11 September 2026 before it starts interrupting sign-ins.
+
+5. **Add Mariah to the Addaptive about page**, then set her `url` in
+   `AUTHORS` in `src/site.mjs`. Google's Article guidance asks for an author
+   URL that uniquely identifies the person. David's points at
+   `addaptive.com.au/about/`, which names him. Hers is deliberately absent
+   rather than pointed at a page that does not.
+
+6. **Optional, and needs a decision:** the Organization entity is flagged for
+   missing `streetAddress` and `postalCode`. Both are optional and both come
+   from the original build's schema. The September SEO review asked whether
+   Brisbane is a staffed physical location before changing Organization schema,
+   so this is left alone rather than filled in with something unverified.
+
+7. **Re-check the Cowork article close to any future update.** The Frontier
+   detail is the part most likely to move.
+
+## Launched
+
+Merged and deployed on 11 September 2026. Verified live on
+`https://copilot-training.com.au`:
+
+- All 15 routes and assets return 200, including the three service pages, the
+  Insights index, all four articles, `robots.txt`, `sitemap.xml`, `feed.xml`
+  and `og-image.png`.
+- `/src/`, `build.mjs` and `verify.mjs` return 404, so the generator and
+  checker are not served.
+- Clean URLs work without a trailing slash, and `/insights/` 308s to
+  `/insights`.
+- Every canonical is self-referencing and points at a URL that answers 200.
+- JSON-LD parses on every page type.
+- No em dashes anywhere in the served HTML.
+
+**Search Console:** sitemap submitted and read successfully, 9 pages
+discovered. Indexing requested for all eight new URLs; each is now in Google's
+priority crawl queue.
+
+**Google Rich Results Test:**
+
+| Page | Result |
+|---|---|
+| `/copilot-workshop` | 3 valid items: Breadcrumbs, Local businesses, Organization |
+| `/insights/what-copilot-cowork-changes` | 4 valid items: Articles, Breadcrumbs, Local businesses, Organization |
+
+All valid and eligible. The only non-critical issues were optional fields:
+`author.url`, now fixed for David, and `streetAddress`/`postalCode`, left alone
+deliberately.
+
+FAQPage does not appear as an eligible rich result, which is expected: Google
+restricted FAQ rich results to government and health sites in 2023. The markup
+is still valid and still helps machines read the page.
 
 ## Open questions
 
