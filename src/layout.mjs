@@ -4,7 +4,7 @@
 
 import {
   SITE_URL, SITE_NAME, ORG_NAME, ORG_LEGAL_NAME, ORG_URL, ORG_ABN, EMAIL,
-  GA_MEASUREMENT_ID, SERVICES, BOOKING_URL, BOOKING_READY, abs,
+  GA_MEASUREMENT_ID, SERVICES, abs,
 } from './site.mjs';
 
 export const esc = (s) =>
@@ -331,10 +331,6 @@ ${items}
 
 /* Closing conversion band used on every inner page. */
 export function ctaBand(heading, copy) {
-  const booking = BOOKING_READY
-    ? `        <a href="${BOOKING_URL}" class="btn-outline" data-track="cta_booking_click" target="_blank" rel="noopener noreferrer">Book a 20 minute call</a>\n`
-    : '';
-
   return `<section class="cta-band" aria-labelledby="cta-band-h">
   <div class="container">
     <div class="cta-band__inner">
@@ -344,7 +340,7 @@ export function ctaBand(heading, copy) {
       </div>
       <div class="cta-band__actions">
         <a href="/#contact" class="btn-primary" data-track="cta_primary_click">Get in Touch</a>
-${booking}      </div>
+      </div>
     </div>
   </div>
 </section>`;

@@ -3,7 +3,7 @@
    deployed site works whether or not this script has ever run. Committed
    output is the deployable artefact; this script keeps it consistent. */
 
-import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -184,11 +184,3 @@ copilot-training.com.au
 write('llms.txt', llms);
 
 console.log('\nBuild complete.');
-
-/* Surface the deployment blocker on every build rather than only in the
-   verification step, so it cannot be missed. */
-const site = readFileSync(join(ROOT, 'src/site.mjs'), 'utf8');
-if (site.includes('BOOKING_URL_PENDING')) {
-  console.log('\n  NOTE: BOOKING_URL is still a placeholder. The secondary');
-  console.log('  booking CTA is omitted from every page until it is set.');
-}

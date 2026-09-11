@@ -6,30 +6,11 @@
 
 ---
 
-## Blockers before production
+## Blocker before production
 
-Two things need David. `npm run build` fails on the first one by design, so
-neither can ship unnoticed.
+One thing needs David.
 
-### 1. The booking URL does not exist yet
-
-The brief asks for a secondary, lower-friction CTA next to the contact form. No
-booking link exists anywhere in the business: nothing on addaptive.com.au,
-claudeforbusiness.com.au or chatgptforbusiness.com.au, and nothing in CoWork.
-
-The CTA is fully built and tested. It appears under the contact form on the
-homepage and in the closing band on every inner page. It is withheld from the
-rendered output until a real URL is set, rather than shipping a dead link.
-
-**To enable:** set `BOOKING_URL` in `src/site.mjs` and run `npm run build`.
-A Microsoft Bookings "book with me" page fits, since Addaptive is already on
-Microsoft 365. The URL form is
-`https://outlook.office.com/bookwithme/user/<you>@addaptive.com.au/`.
-
-Verified by temporarily setting a URL: both placements render, both fire
-`cta_booking_click`, all checks pass. Then reverted.
-
-### 2. The canonical hostname contradicts the live redirect
+### The canonical hostname contradicts the live redirect
 
 This is pre-existing and worth fixing in the same release.
 
@@ -50,6 +31,21 @@ sitemap, feed and JSON-LD all follow from that one constant.
 I have deliberately **not** added a `www` to apex redirect in `vercel.json`,
 because while the domain-level apex to `www` redirect is still in place the two
 would form a loop.
+
+---
+
+## Decision: no secondary booking CTA
+
+The brief asked for a direct booking link alongside the contact form. No such
+link existed anywhere in the business, and on 11 September David decided against
+creating one: the form is the single conversion path.
+
+The CTA and its `cta_booking_click` event have been removed rather than left in
+place disabled, so there is no dead code. Both are in the git history if the
+decision changes. Re-adding means one constant and two template blocks.
+
+The form itself remains the only enquiry route, with the email address in the
+footer and in the form's error state as the fallback if a submission fails.
 
 ---
 
@@ -205,14 +201,13 @@ Two deliberate notes on house style:
 
 | Check | Result |
 |---|---|
-| `npm run build` (generate + verify) | Passes except the intentional booking gate |
+| `npm run build` (generate + verify) | Passes |
 | 9 routes at 1400px desktop | Rendered and reviewed |
 | 9 routes at 375px mobile | Rendered and reviewed, no horizontal overflow on any route |
 | Services dropdown, mouse and keyboard, Escape to close | Works |
 | Mobile menu with Services sub-list | Works |
 | Contact form success path | Posts all 8 fields to Web3Forms, clears inputs, preserves hidden fields, fires `form_start` and `form_submitted` |
 | Contact form failure path | Shows the error with `role="alert"`, preserves what was typed, re-enables the button, fires `form_error` |
-| Secondary booking CTA | Both placements verified with a temporary URL, then reverted |
 | Internal links | Every one resolves, checked on every build |
 | Metadata, canonicals, sitemap, robots, feed | Verified on every build |
 | JSON-LD | Schema.org Validator, 0 errors and 0 warnings |
@@ -227,28 +222,27 @@ handler itself is verified against both a success and a failure response.
 
 ## Still to do
 
-1. **Supply the booking URL** (blocker, above).
-2. **Fix the apex/www redirect in Vercel** (blocker, above).
-3. **Deploy a preview** and review. The repo has no `.vercel` link locally, so
+1. **Fix the apex/www redirect in Vercel** (blocker, above).
+2. **Deploy a preview** and review. The repo has no `.vercel` link locally, so
    the preview needs to come from the connected Vercel project or `vercel` CLI.
-4. **Move the repo to the Addaptive Enterprises GitHub account**, as David
+3. **Move the repo to the Addaptive Enterprises GitHub account**, as David
    asked. It currently sits under `addaptiveai`. Transfer in the repo's
    settings; GitHub redirects the old remote automatically, and the Vercel
    integration needs reconnecting after the move.
-5. **Run Google's Rich Results Test** against the preview URL. The Schema.org
+4. **Run Google's Rich Results Test** against the preview URL. The Schema.org
    Validator has already passed, but Rich Results needs a public URL.
-6. **After production deploy:** submit the sitemap in Search Console and Bing
+5. **After production deploy:** submit the sitemap in Search Console and Bing
    Webmaster Tools, and request indexing for each of the eight new URLs via URL
    Inspection. The property is already verified via the GA4 tag.
-7. **Register `form_submitted` as a key event in GA4**, matching the other
+6. **Register `form_submitted` as a key event in GA4**, matching the other
    Addaptive sites. The event now fires; marking it as a key event is a change
    in the GA4 interface.
-8. **Confirm logo permission** for Committee for Brisbane. Property Council and
+7. **Confirm logo permission** for Committee for Brisbane. Property Council and
    Match & Wood are already named on the live site and their logos are already
    published on addaptive.com.au. Committee for Brisbane's logo is also already
    on addaptive.com.au, so this is likely settled, but the brief asked for
    explicit sign-off and I have not seen it.
-9. **Re-check article 3 close to publish.** The brief asked for this and the
+8. **Re-check article 3 close to publish.** The brief asked for this and the
    article says so on its face. The Frontier detail in particular is the part
    most likely to move.
 

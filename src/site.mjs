@@ -15,12 +15,6 @@ export const EMAIL = 'david@addaptive.com.au';
 export const GA_MEASUREMENT_ID = 'G-25YBT0GGK9';
 export const WEB3FORMS_KEY = 'dcaae080-0710-41a9-bc82-b41d975f3c19';
 
-/* Secondary, lower-friction conversion. Not yet supplied. `npm run verify`
-   fails while this placeholder is in place, so it cannot reach production
-   unnoticed. Replace with the live Microsoft Bookings page. */
-export const BOOKING_URL = 'BOOKING_URL_PENDING';
-export const BOOKING_READY = BOOKING_URL !== 'BOOKING_URL_PENDING';
-
 /* Order here drives the header, the footer and the sitemap. */
 export const SERVICES = [
   {

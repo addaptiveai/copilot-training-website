@@ -1040,23 +1040,6 @@ summary:focus-visible {
   transform: translateY(-1px);
 }
 
-/* Secondary booking action beneath the contact form. */
-.contact__alt {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.62);
-  line-height: 1.7;
-}
-.contact__alt a {
-  color: var(--teal);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.contact__alt a:hover { color: #02c9a0; }
-
 /* ── Related links ─────────────────────────────────────── */
 .related__grid {
   display: grid;

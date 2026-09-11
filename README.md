@@ -84,7 +84,6 @@ GA4 `G-25YBT0GGK9`, unchanged from the original build. Events:
 | Event | Fires on |
 |---|---|
 | `cta_primary_click` | any primary "Get in Touch" CTA |
-| `cta_booking_click` | the secondary booking link |
 | `outbound_addaptive_click` | links out to addaptive.com.au |
 | `form_start` | first keystroke in the contact form |
 | `form_submitted` | successful submission (register as a key event in GA4) |

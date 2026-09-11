@@ -1,5 +1,5 @@
 import { renderPage, esc } from '../layout.mjs';
-import { SERVICES, EMAIL, WEB3FORMS_KEY, BOOKING_URL, BOOKING_READY, abs } from '../site.mjs';
+import { SERVICES, EMAIL, WEB3FORMS_KEY, abs } from '../site.mjs';
 import { articles } from '../insights/articles.mjs';
 
 /* Service card icons, lifted unchanged from the original build. */
@@ -85,10 +85,6 @@ function latestInsights() {
     )
     .join('\n\n');
 }
-
-const bookingLine = BOOKING_READY
-  ? `          <p class="contact__alt">Not ready for a form? <a href="${BOOKING_URL}" data-track="cta_booking_click" target="_blank" rel="noopener noreferrer">Book a 20 minute call</a> and we will talk it through instead.</p>`
-  : '';
 
 const body = `<section class="hero" aria-label="Introduction">
   <div class="container">
@@ -245,8 +241,6 @@ ${latestInsights()}
             Something went wrong. Please try again or email <a href="mailto:${EMAIL}">${EMAIL}</a>.
           </div>
         </form>
-
-${bookingLine}
       </div>
 
     </div>
