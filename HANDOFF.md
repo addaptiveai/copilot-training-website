@@ -237,6 +237,21 @@ handler itself is verified against both a success and a failure response.
 
 ---
 
+## One thing that broke on first deploy
+
+Adding `package.json` changed how Vercel sees the repo. It auto-detected a Node
+project, ran a build, then failed with "No Output Directory named public found".
+The build itself was fine, the logs show every page written; Vercel just expects
+a `public` directory whenever a build command runs.
+
+There is no build step here by design: the generated HTML is committed and the
+repo root is the site. `vercel.json` now says so explicitly, and a
+`.vercelignore` keeps the generator, the checker and their sources out of the
+deployment, since they are not part of what the site serves.
+
+Worth remembering if anyone adds dependencies later: the moment a real build
+step is wanted on Vercel, that config needs revisiting.
+
 ## Still to do
 
 1. **Fix the apex/www redirect in Vercel** (blocker, above).
