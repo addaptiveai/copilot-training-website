@@ -6,45 +6,44 @@
 
 ---
 
-## Blocker before production
+## Resolved: the canonical hostname now serves directly
 
-One thing needs David.
+Fixed in Vercel on 11 September 2026.
 
-### The canonical hostname contradicts the live redirect
+`copilot-training.com.au` used to return a 307 to `www`, while every canonical
+tag pointed at the apex, so Google was told the canonical URL was one that
+redirected away.
 
-This is pre-existing and worth fixing in the same release.
+Search Console confirmed the apex was the right target. Inspecting the apex in
+the `https://copilot-training.com.au/` property showed:
 
-`copilot-training.com.au` currently returns a **307 to
-`www.copilot-training.com.au`**, while every canonical tag points at the apex.
-So Google is told the canonical URL is one that redirects away. The Addaptive
-site had the same class of problem and was fixed the other way round in the
-10 September review: `www` redirects to the apex, and the apex serves.
-
-**The fix is in the Vercel dashboard, not in this repo.** In the project's
-Domains settings, make `copilot-training.com.au` the primary domain serving
-content, and set `www.copilot-training.com.au` to redirect to it (308).
-
-**Search Console confirms the apex is the right choice.** Checked on
-11 September 2026 in the `https://copilot-training.com.au/` property:
-
-- Google-selected canonical: the inspected URL, i.e. the apex. Google has
-  already settled on the apex despite the 307, because the `www` page's
-  canonical tag points there.
+- Google-selected canonical: the inspected URL, i.e. the apex. Google had
+  already settled there, because the `www` page's canonical tag pointed at it.
 - Referring page: `https://www.copilot-training.com.au/`, so Google reached the
   apex through the `www` version.
 - Sitemaps: "No referring sitemaps detected", which this release fixes.
-- Last crawl: 11 September 2026, and the page is indexed.
 
-So the fix is not a change of direction, it is making the server agree with the
-canonical Google has already picked.
+So this was not a change of direction, it was making the server agree with the
+canonical Google had already picked.
 
-Everything in this release assumes the apex is canonical. If you would rather
-keep `www`, change `SITE_URL` in `src/site.mjs` and rebuild; canonicals,
-sitemap, feed and JSON-LD all follow from that one constant.
+**What changed in the Vercel project's Domains settings:**
 
-I have deliberately **not** added a `www` to apex redirect in `vercel.json`,
-because while the domain-level apex to `www` redirect is still in place the two
-would form a loop.
+| Domain | Before | After |
+|---|---|---|
+| `copilot-training.com.au` | 307 redirect to `www` | Serves Production |
+| `www.copilot-training.com.au` | Served Production | 308 permanent redirect to the apex |
+
+The apex A record already pointed at Vercel (`216.198.79.1`), so no DNS change
+was needed. Vercel still shows a "DNS Change Recommended" hint on the apex,
+which is a suggestion to move to its newer per-project record; the current
+record is valid and serving.
+
+Verified live:
+
+- `https://copilot-training.com.au/` returns 200 directly
+- `https://www.copilot-training.com.au/` returns 308 to the apex
+- `http://copilot-training.com.au/` returns 308 to HTTPS on the apex
+- The canonical tag on the served page points at the apex, which now answers 200
 
 ---
 
@@ -254,13 +253,9 @@ step is wanted on Vercel, that config needs revisiting.
 
 ## Still to do
 
-1. **Fix the apex/www redirect in Vercel** (blocker, above).
-2. **Push the branch and open a PR.** I have no GitHub or Vercel credentials in
-   this environment, so the push, the preview deployment and the repo transfer
-   all need you. The branch is committed locally and ready:
-   `git push -u origin release/content-depth`.
-3. **Deploy a preview** and review. The repo has no `.vercel` link locally, so
-   the preview needs to come from the connected Vercel project or `vercel` CLI.
+1. **Review the preview and merge PR #1.** Everything else is done. The preview
+   is behind Vercel's deployment protection, so open it while signed in to
+   Vercel.
 4. **Move the repo to the Addaptive Enterprises GitHub account**, as David
    asked. It currently sits under `addaptiveai`. Transfer in the repo's
    settings; GitHub redirects the old remote automatically, and the Vercel
