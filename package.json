@@ -2,14 +2,15 @@
   "name": "copilot-training-website",
   "version": "2.0.0",
   "private": true,
-  "description": "copilot-training.com.au — Addaptive Microsoft Copilot training site",
+  "description": "copilot-training.com.au \u2014 Addaptive Microsoft Copilot training site",
   "type": "module",
   "scripts": {
     "build": "node build.mjs && node verify.mjs",
     "lint": "node verify.mjs",
     "generate": "node build.mjs",
     "og": "node tools/make-og-image.mjs",
-    "serve": "node --run generate && python3 -m http.server 4173"
+    "serve": "node --run generate && python3 -m http.server 4173",
+    "links": "node tools/check-links.mjs"
   },
   "engines": {
     "node": ">=20"

@@ -134,7 +134,7 @@ export const articles = [
         heading: 'Excel: the biggest saving, and the most setup',
         html: `
 <p>Excel is where the hours are. It is also where Copilot most needs the underlying work to be tidy, and where a confidently wrong answer does the most damage.</p>
-<p>Copilot in Excel can now edit the workbook directly rather than only talk about it. It will write and apply formulas across sheets, build charts and PivotTables, sort and filter, apply conditional formatting, and answer questions about what the data is doing (<a href="https://support.microsoft.com/en-us/office/get-started-with-copilot-in-excel-d7110502-0334-4b4f-a175-a73abdfc118a" target="_blank" rel="noopener noreferrer">Microsoft Support</a>).</p>
+<p>Copilot in Excel can now edit the workbook directly rather than only talk about it. It will write and apply formulas across sheets, build charts and PivotTables, sort and filter, apply conditional formatting, and answer questions about what the data is doing (<a href="https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel" target="_blank" rel="noopener noreferrer">Microsoft Support</a>).</p>
 <p>What we train:</p>
 <ul>
   <li><strong>Asking questions about a dataset in plain language</strong> before touching a formula. This is the habit shift. Most people reach for a PivotTable out of muscle memory when a question would have been faster.</li>
@@ -190,7 +190,7 @@ export const articles = [
     sources: [
       {
         label: 'Microsoft Support: Get started with Copilot in Excel',
-        href: 'https://support.microsoft.com/en-us/office/get-started-with-copilot-in-excel-d7110502-0334-4b4f-a175-a73abdfc118a',
+        href: 'https://support.microsoft.com/en-us/excel/copilot/get-started-with-copilot-in-excel',
       },
     ],
     sourceChecked: '11 September 2026',

@@ -1,0 +1,66 @@
+name: Quality checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # First of the month: re-check that the Microsoft documentation the articles
+  # cite has not moved or disappeared.
+  schedule:
+    - cron: '0 22 1 * *'
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # No dependencies, so there is nothing to install. Generating the site
+      # and running every check is a single command.
+      - name: Build and verify
+        run: npm run build
+
+      # The committed HTML is what Vercel serves, so it has to match what the
+      # source currently produces. This fails if someone edited src/ without
+      # rebuilding, or hand-edited a generated page.
+      - name: Confirm the committed output is current
+        run: |
+          if ! git diff --quiet; then
+            echo "The committed HTML does not match what build.mjs generates."
+            echo "Run 'npm run build' and commit the result."
+            echo ""
+            git diff --stat
+            exit 1
+          fi
+          echo "Generated output is up to date."
+
+  # External documentation moves, and the articles cite it. This runs on a
+  # schedule rather than on every pull request so a flaky third-party response
+  # never blocks a merge.
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check cited sources still resolve
+        run: npm run links

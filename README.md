@@ -33,12 +33,18 @@ Hand-maintained: everything in `src/`, `assets/`, `tools/`.
 npm run build     # generate the site, then verify it
 npm run lint      # verify only
 npm run generate  # generate only
+npm run links     # check every cited external link still resolves
 npm run og        # regenerate og-image.png (macOS only)
 npm run serve     # generate, then serve on http://localhost:4173
 ```
 
 `npm run build` exits non-zero if any check fails. Nothing should be deployed
 while it does.
+
+`npm run links` is kept separate because it depends on the network. Run it
+before publishing an article update. CI runs it monthly, since the Microsoft
+documentation the articles cite does move: the Excel support URL had already
+been redirected within a day of being cited.
 
 ## Making changes
 
@@ -69,6 +75,19 @@ in Copilot Cowork is generally available.
 
 Accessibility: alt text on every image, no skipped heading levels, no duplicate
 ids, a label for every form control, and every fragment link resolving.
+
+## CI
+
+`.github/workflows/quality.yml` runs on every pull request and push to `main`:
+
+1. `npm run build`, which generates the site and runs every check.
+2. A `git diff` guard confirming the committed HTML matches what the source
+   currently produces. This catches a change to `src/` that was never rebuilt,
+   and a hand-edit to a generated page that would be silently overwritten later.
+
+The link check runs monthly on a schedule, and on demand from the Actions tab.
+It is kept off pull requests so a slow third-party response never blocks a
+merge.
 
 ## Local preview
 

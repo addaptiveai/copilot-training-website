@@ -212,6 +212,8 @@ Two deliberate notes on house style:
 | Metadata, canonicals, sitemap, robots, feed | Verified on every build |
 | JSON-LD | Schema.org Validator, 0 errors and 0 warnings |
 | Accessibility | Alt text, heading order, duplicate ids, label association, fragment targets, all checked on every build |
+| External sources | All 8 cited links resolve directly, no redirects. One Microsoft URL had already moved and was updated |
+| CI workflow | YAML validated, drift guard confirmed to catch uncommitted output |
 | Reduced motion | All transforms and transitions disabled under `prefers-reduced-motion` |
 
 **Not done:** a live contact form submission. That sends a real enquiry email to
@@ -223,26 +225,30 @@ handler itself is verified against both a success and a failure response.
 ## Still to do
 
 1. **Fix the apex/www redirect in Vercel** (blocker, above).
-2. **Deploy a preview** and review. The repo has no `.vercel` link locally, so
+2. **Push the branch and open a PR.** I have no GitHub or Vercel credentials in
+   this environment, so the push, the preview deployment and the repo transfer
+   all need you. The branch is committed locally and ready:
+   `git push -u origin release/content-depth`.
+3. **Deploy a preview** and review. The repo has no `.vercel` link locally, so
    the preview needs to come from the connected Vercel project or `vercel` CLI.
-3. **Move the repo to the Addaptive Enterprises GitHub account**, as David
+4. **Move the repo to the Addaptive Enterprises GitHub account**, as David
    asked. It currently sits under `addaptiveai`. Transfer in the repo's
    settings; GitHub redirects the old remote automatically, and the Vercel
    integration needs reconnecting after the move.
-4. **Run Google's Rich Results Test** against the preview URL. The Schema.org
+5. **Run Google's Rich Results Test** against the preview URL. The Schema.org
    Validator has already passed, but Rich Results needs a public URL.
-5. **After production deploy:** submit the sitemap in Search Console and Bing
+6. **After production deploy:** submit the sitemap in Search Console and Bing
    Webmaster Tools, and request indexing for each of the eight new URLs via URL
    Inspection. The property is already verified via the GA4 tag.
-6. **Register `form_submitted` as a key event in GA4**, matching the other
+7. **Register `form_submitted` as a key event in GA4**, matching the other
    Addaptive sites. The event now fires; marking it as a key event is a change
    in the GA4 interface.
-7. **Confirm logo permission** for Committee for Brisbane. Property Council and
+8. **Confirm logo permission** for Committee for Brisbane. Property Council and
    Match & Wood are already named on the live site and their logos are already
    published on addaptive.com.au. Committee for Brisbane's logo is also already
    on addaptive.com.au, so this is likely settled, but the brief asked for
    explicit sign-off and I have not seen it.
-8. **Re-check article 3 close to publish.** The brief asked for this and the
+9. **Re-check article 3 close to publish.** The brief asked for this and the
    article says so on its face. The Frontier detail in particular is the part
    most likely to move.
 
