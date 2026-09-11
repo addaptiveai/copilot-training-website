@@ -1,1 +1,4 @@
 addaptive-brand-assets/
+.DS_Store
+node_modules/
+.vercel/

@@ -1,0 +1,74 @@
+# Public marketing site. Everything here is intended to be crawled.
+
+User-agent: *
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Applebot
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /assets/clients/
+Disallow: /src/
+
+Host: https://copilot-training.com.au
+Sitemap: https://copilot-training.com.au/sitemap.xml

@@ -1,0 +1,8 @@
+# The deployment should contain only what the site serves. The generator, the
+# checker and their sources live in the repo but are not part of the site, and
+# Vercel runs no build step (see vercel.json).
+src/
+tools/
+build.mjs
+verify.mjs
+.github/
