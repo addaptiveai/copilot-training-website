@@ -277,13 +277,23 @@ step is wanted on Vercel, that config needs revisiting.
 
 ## Still to do
 
-1. **Mark `form_submitted` as a key event in GA4.** This one cannot be done
-   ahead of time. This property's GA4 interface only lets you star an event it
-   has already observed, and there is no "new key event by name" option.
-   `form_start` is already showing under Recent events, so the taxonomy works.
-   Once the first enquiry comes through, go to Admin, Data display, Events,
-   Recent events, and click the star next to `form_submitted`. GA4 can take up
-   to 24 hours to list a newly seen event.
+1. **Mark `form_submitted` as a key event in GA4.** Half done, and the
+   remaining half is a waiting game.
+
+   This property's GA4 only lets you star an event it has already observed, and
+   there is no "new key event by name" option, so the event had to fire first.
+   A clearly-marked test enquiry was submitted through the live form on
+   12 September 2026, and GA4 Realtime confirmed `form_submitted` with a count
+   of 1. It has not yet appeared in Admin, Data display, Events, Recent events,
+   which GA4 says can take up to 24 hours.
+
+   **To finish:** go to Admin, Data display, Events, Recent events, and click
+   the star next to `form_submitted`. It should be listed from 13 September.
+
+   The same test confirmed the form works end to end in production: Web3Forms
+   returned success and the page showed its success state. Delivery on this
+   access key is independently proven by a genuine enquiry that arrived through
+   it on 11 September.
 
 2. **Move the repo to the Addaptive Enterprises GitHub account.** It still sits
    under `addaptiveai`. Transfer in the repo settings; GitHub redirects the old
