@@ -290,25 +290,22 @@ step is wanted on Vercel, that config needs revisiting.
    remote automatically, but the Vercel integration needs reconnecting
    afterwards, so do it at a quiet moment rather than before a release.
 
-3. **Submit the sitemap to Bing Webmaster Tools.** Google is done. Bing was not
-   reachable in this session.
-
-4. **Enable 2FA on the GitHub account.** GitHub gave a 4 day deadline on
+3. **Enable 2FA on the GitHub account.** GitHub gave a 4 day deadline on
    11 September 2026 before it starts interrupting sign-ins.
 
-5. **Add Mariah to the Addaptive about page**, then set her `url` in
+4. **Add Mariah to the Addaptive about page**, then set her `url` in
    `AUTHORS` in `src/site.mjs`. Google's Article guidance asks for an author
    URL that uniquely identifies the person. David's points at
    `addaptive.com.au/about/`, which names him. Hers is deliberately absent
    rather than pointed at a page that does not.
 
-6. **Optional, and needs a decision:** the Organization entity is flagged for
+5. **Optional, and needs a decision:** the Organization entity is flagged for
    missing `streetAddress` and `postalCode`. Both are optional and both come
    from the original build's schema. The September SEO review asked whether
    Brisbane is a staffed physical location before changing Organization schema,
    so this is left alone rather than filled in with something unverified.
 
-7. **Re-check the Cowork article close to any future update.** The Frontier
+6. **Re-check the Cowork article close to any future update.** The Frontier
    detail is the part most likely to move.
 
 ## Launched
@@ -327,9 +324,24 @@ Merged and deployed on 11 September 2026. Verified live on
 - JSON-LD parses on every page type.
 - No em dashes anywhere in the served HTML.
 
-**Search Console:** sitemap submitted and read successfully, 9 pages
+**Google Search Console:** sitemap submitted and read successfully, 9 pages
 discovered. Indexing requested for all eight new URLs; each is now in Google's
 priority crawl queue.
+
+**Bing Webmaster Tools:** site added and verified on 12 September 2026, sitemap
+submitted with 0 errors and 0 warnings, and all nine URLs pushed through URL
+Submission.
+
+Verification used the HTML meta tag rather than the two methods Bing
+recommends first. DNS auto-verification wants a GoDaddy sign-in, and the XML
+file method requires downloading a file from Bing; the meta tag's value is
+shown on screen and can simply be read. The tag is emitted site-wide rather
+than on the homepage alone, so a later change to the home page cannot silently
+drop verification. Bing's instruction is to leave it in place permanently.
+
+The Google Search Console import was deliberately not used. It is the faster
+path, but it grants Bing access to the whole Search Console account, which is
+a much broader permission than this task needs.
 
 **Google Rich Results Test:**
 
