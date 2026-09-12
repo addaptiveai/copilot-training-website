@@ -291,9 +291,8 @@ step is wanted on Vercel, that config needs revisiting.
    the star next to `form_submitted`. It should be listed from 13 September.
 
    The same test confirmed the form works end to end in production: Web3Forms
-   returned success and the page showed its success state. Delivery on this
-   access key is independently proven by a genuine enquiry that arrived through
-   it on 11 September.
+   returned success, the page showed its success state, and David confirmed the
+   email arrived. The contact form is verified end to end.
 
 2. **Move the repo to the Addaptive Enterprises GitHub account.** It still sits
    under `addaptiveai`. Transfer in the repo settings; GitHub redirects the old
