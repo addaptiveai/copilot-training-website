@@ -13,6 +13,10 @@ export const ORG_ABN = '93 685 138 327';
 export const EMAIL = 'david@addaptive.com.au';
 
 export const GA_MEASUREMENT_ID = 'G-25YBT0GGK9';
+
+/* Bing Webmaster Tools site ownership. Bing's own instruction: do not remove
+   this once verification succeeds, or the site falls out of verification. */
+export const BING_SITE_VERIFICATION = '1B427C432BFFCC24A7480FD94A21EDD9';
 export const WEB3FORMS_KEY = 'dcaae080-0710-41a9-bc82-b41d975f3c19';
 
 /* Order here drives the header, the footer and the sitemap. */

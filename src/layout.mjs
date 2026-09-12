@@ -4,7 +4,7 @@
 
 import {
   SITE_URL, SITE_NAME, ORG_NAME, ORG_LEGAL_NAME, ORG_URL, ORG_ABN, EMAIL,
-  GA_MEASUREMENT_ID, SERVICES, abs,
+  GA_MEASUREMENT_ID, BING_SITE_VERIFICATION, SERVICES, abs,
 } from './site.mjs';
 
 export const esc = (s) =>
@@ -253,6 +253,7 @@ export function renderPage(page) {
   <meta name="twitter:description" content="${esc(page.description)}">
   <meta name="twitter:image" content="${SITE_URL}/og-image.png">
 ${page.ogExtra || ''}
+  <meta name="msvalidate.01" content="${BING_SITE_VERIFICATION}">
   <link rel="icon" href="/copilot-icon.png" type="image/png">
   <link rel="alternate" type="application/rss+xml" title="Addaptive Copilot Insights" href="${SITE_URL}/feed.xml">
 
