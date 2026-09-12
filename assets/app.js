@@ -88,12 +88,27 @@
       setOpen(dropdown.getAttribute('data-open') !== 'true');
     });
 
+    /* Closing on mouseleave alone is unforgiving: a diagonal move from the
+       button towards a lower item briefly leaves the wrapper and the menu
+       vanishes mid-reach. A short grace period fixes that. */
     var wrapper = dropToggle.closest('.nav__item');
-    wrapper.addEventListener('mouseenter', function () { setOpen(true); });
-    wrapper.addEventListener('mouseleave', function () { setOpen(false); });
+    var closeTimer;
+
+    wrapper.addEventListener('mouseenter', function () {
+      clearTimeout(closeTimer);
+      setOpen(true);
+    });
+
+    wrapper.addEventListener('mouseleave', function () {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () { setOpen(false); }, 220);
+    });
 
     document.addEventListener('click', function (e) {
-      if (!wrapper.contains(e.target)) setOpen(false);
+      if (!wrapper.contains(e.target)) {
+        clearTimeout(closeTimer);
+        setOpen(false);
+      }
     });
 
     document.addEventListener('keydown', function (e) {
@@ -105,8 +120,13 @@
 
     /* Close once focus leaves the group, so keyboard users are not left with
        an open menu behind them. */
+    wrapper.addEventListener('focusin', function () { clearTimeout(closeTimer); });
+
     wrapper.addEventListener('focusout', function (e) {
-      if (!wrapper.contains(e.relatedTarget)) setOpen(false);
+      if (!wrapper.contains(e.relatedTarget)) {
+        clearTimeout(closeTimer);
+        setOpen(false);
+      }
     });
   }
 

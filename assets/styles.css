@@ -625,6 +625,17 @@ summary:focus-visible {
   display: none;
 }
 .nav__dropdown[data-open="true"] { display: block; }
+/* The panel sits 14px below the button. That gap is outside the hover target,
+   so without this bridge the menu closed the moment anyone moved the cursor
+   towards it. The pseudo-element makes the gap part of the panel. */
+.nav__dropdown::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
 .nav__dropdown a {
   display: block;
   padding: 10px 12px;

@@ -236,6 +236,30 @@ handler itself is verified against both a success and a failure response.
 
 ---
 
+## Fixed after launch: the Services dropdown
+
+David reported that the dropdown appeared on hover but vanished as soon as he
+moved the cursor towards it, so no service page could be clicked.
+
+The panel sits 14px below the button, and that gap was outside the hover
+target. Moving down from the button crossed it, fired `mouseleave` on the
+wrapper, and closed the menu mid-reach. It worked in automated testing because
+that clicks the link directly rather than travelling to it, which is exactly
+the kind of thing a real cursor catches and a script does not.
+
+Two changes, both needed:
+
+- A pseudo-element on the panel covers the gap, so the pointer never leaves the
+  hover target on the way down.
+- `mouseleave` now waits 220ms before closing, so a diagonal move towards a
+  lower item is forgiven.
+
+Verified by driving a real cursor along the failing path, button to gap to each
+item, then clicking through to a service page. Also confirmed the invisible
+bridge does not intercept clicks on the neighbouring nav links while the menu
+is open: How It Works, Insights, Clients, Contact and Get in Touch all still
+hit their own anchors.
+
 ## One thing that broke on first deploy
 
 Adding `package.json` changed how Vercel sees the repo. It auto-detected a Node
